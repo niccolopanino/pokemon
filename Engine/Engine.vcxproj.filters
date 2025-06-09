@@ -47,4 +47,7 @@
   <ItemGroup>
     <ResourceCompile Include="src\Engine.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="resources\gameconfig.xml" />
+  </ItemGroup>
 </Project>
