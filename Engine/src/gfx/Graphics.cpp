@@ -8,10 +8,10 @@ namespace dx = DirectX;
 
 namespace pkmn::gfx
 {
-	Graphics::Graphics(HWND hwnd, unsigned int width, unsigned int height)
-	{
-		DXGI_SWAP_CHAIN_DESC sd = { };
-		sd.BufferDesc.Width = width;
+    Graphics::Graphics(HWND hwnd, unsigned int width, unsigned int height)
+    {
+        DXGI_SWAP_CHAIN_DESC sd = { };
+        sd.BufferDesc.Width = width;
         sd.BufferDesc.Height = height;
         sd.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
         sd.BufferDesc.RefreshRate = { 0u, 0u }; // Numerator, Denominator
@@ -90,7 +90,7 @@ namespace pkmn::gfx
         vp.TopLeftX = .0f;
         vp.TopLeftY = .0f;
         m_context->RSSetViewports(1u, &vp);
-	}
+    }
 
     dx::XMMATRIX Graphics::get_projection() const noexcept
     {

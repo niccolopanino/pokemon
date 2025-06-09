@@ -5,8 +5,8 @@
 
 namespace pkmn::gfx
 {
-	class HResGfxException : public HResBaseException
-	{
+    class HResGfxException : public HResBaseException
+    {
     public:
         HResGfxException(int line, const wchar_t* file, HRESULT hr,
             const std::vector<std::wstring>& info_msgs) noexcept;
@@ -18,5 +18,5 @@ namespace pkmn::gfx
         virtual const char* what() const noexcept override;
     private:
         std::wstring m_info;
-	};
+    };
 }

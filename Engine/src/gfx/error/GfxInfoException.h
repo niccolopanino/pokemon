@@ -5,8 +5,8 @@
 
 namespace pkmn::gfx
 {
-	class GfxInfoException : public BaseException
-	{
+    class GfxInfoException : public BaseException
+    {
     public:
         GfxInfoException(int line, const wchar_t* file,
             const std::vector<std::wstring>& info_msgs) noexcept;
@@ -15,5 +15,5 @@ namespace pkmn::gfx
         virtual const char* what() const noexcept override;
     private:
         std::wstring m_info;
-	};
+    };
 }

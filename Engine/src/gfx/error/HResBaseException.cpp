@@ -4,9 +4,9 @@
 
 namespace pkmn::gfx
 {
-	std::wstring HResBaseException::translate_error_code(HRESULT hr) noexcept
-	{
-		wchar_t* msg_buf = nullptr;
+    std::wstring HResBaseException::translate_error_code(HRESULT hr) noexcept
+    {
+        wchar_t* msg_buf = nullptr;
 
         // WinAPI will allocate memory for error string
         // and make our pointer point to it
@@ -28,7 +28,7 @@ namespace pkmn::gfx
         LocalFree(msg_buf);
 
         return err_str;
-	}
+    }
 
     HRESULT HResBaseException::get_error_code() const noexcept
     {
