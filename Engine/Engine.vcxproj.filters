@@ -18,7 +18,7 @@
     <ClCompile Include="src\game\Game.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\util\Windoof.h" />
+    <ClInclude Include="src\util\Wintard.h" />
     <ClInclude Include="src\util\StringConv.h" />
     <ClInclude Include="src\io\Keyboard.h" />
     <ClInclude Include="src\util\Macros.h" />
@@ -40,6 +40,7 @@
     <None Include="src\gfx\error\dxerr\DXGetErrorDescription.inl" />
     <None Include="src\gfx\error\dxerr\DXGetErrorString.inl" />
     <None Include="src\gfx\error\dxerr\DXTrace.inl" />
+    <None Include="src\cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\icons\pokeball.ico" />
