@@ -153,6 +153,7 @@
     <ClCompile Include="src\xml\elements\XmlElement.cpp" />
     <ClCompile Include="src\xml\elements\XmlProcessingInstruction.cpp" />
     <ClCompile Include="src\xml\elements\XmlText.cpp" />
+    <ClCompile Include="src\xml\parser\ParserState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\error\InvalidArgumentException.h" />
@@ -181,6 +182,7 @@
     <ClInclude Include="src\xml\elements\XmlNode.h" />
     <ClInclude Include="src\xml\elements\XmlProcessingInstruction.h" />
     <ClInclude Include="src\xml\elements\XmlText.h" />
+    <ClInclude Include="src\xml\parser\ParserState.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\cpp.hint" />
