@@ -149,6 +149,7 @@
     <ClCompile Include="src\gfx\Window.cpp" />
     <ClCompile Include="src\xml\elements\XmlComment.cpp" />
     <ClCompile Include="src\xml\elements\XmlDeclaration.cpp" />
+    <ClCompile Include="src\xml\elements\XmlDocument.cpp" />
     <ClCompile Include="src\xml\elements\XmlNode.cpp" />
     <ClCompile Include="src\xml\elements\XmlElement.cpp" />
     <ClCompile Include="src\xml\elements\XmlProcessingInstruction.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="src\xml\elements\SourcePosition.h" />
     <ClInclude Include="src\xml\elements\XmlComment.h" />
     <ClInclude Include="src\xml\elements\XmlDeclaration.h" />
+    <ClInclude Include="src\xml\elements\XmlDocument.h" />
     <ClInclude Include="src\xml\elements\XmlElement.h" />
     <ClInclude Include="src\xml\elements\XmlMisc.h" />
     <ClInclude Include="src\xml\elements\XmlNode.h" />

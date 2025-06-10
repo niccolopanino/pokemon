@@ -24,6 +24,7 @@
     <ClCompile Include="src\xml\elements\XmlComment.cpp" />
     <ClCompile Include="src\xml\elements\XmlProcessingInstruction.cpp" />
     <ClCompile Include="src\error\InvalidArgumentException.cpp" />
+    <ClCompile Include="src\xml\elements\XmlDocument.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\util\Wintard.h" />
@@ -53,6 +54,7 @@
     <ClInclude Include="src\xml\elements\XmlComment.h" />
     <ClInclude Include="src\xml\elements\XmlProcessingInstruction.h" />
     <ClInclude Include="src\error\InvalidArgumentException.h" />
+    <ClInclude Include="src\xml\elements\XmlDocument.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\gfx\error\dxerr\DXGetErrorDescription.inl" />
