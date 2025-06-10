@@ -147,6 +147,12 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\util\StringConv.cpp" />
     <ClCompile Include="src\gfx\Window.cpp" />
+    <ClCompile Include="src\xml\elements\XmlComment.cpp" />
+    <ClCompile Include="src\xml\elements\XmlDeclaration.cpp" />
+    <ClCompile Include="src\xml\elements\XmlNode.cpp" />
+    <ClCompile Include="src\xml\elements\XmlElement.cpp" />
+    <ClCompile Include="src\xml\elements\XmlProcessingInstruction.cpp" />
+    <ClCompile Include="src\xml\elements\XmlText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\error\InvalidArgumentException.h" />
@@ -167,6 +173,14 @@
     <ClInclude Include="src\util\StringConv.h" />
     <ClInclude Include="src\util\Wintard.h" />
     <ClInclude Include="src\gfx\Window.h" />
+    <ClInclude Include="src\xml\elements\SourcePosition.h" />
+    <ClInclude Include="src\xml\elements\XmlComment.h" />
+    <ClInclude Include="src\xml\elements\XmlDeclaration.h" />
+    <ClInclude Include="src\xml\elements\XmlElement.h" />
+    <ClInclude Include="src\xml\elements\XmlMisc.h" />
+    <ClInclude Include="src\xml\elements\XmlNode.h" />
+    <ClInclude Include="src\xml\elements\XmlProcessingInstruction.h" />
+    <ClInclude Include="src\xml\elements\XmlText.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\cpp.hint" />

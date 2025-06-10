@@ -16,6 +16,12 @@
     <ClCompile Include="src\gfx\error\DeviceRemovedException.cpp" />
     <ClCompile Include="src\gfx\error\NoGfxException.cpp" />
     <ClCompile Include="src\game\Game.cpp" />
+    <ClCompile Include="src\xml\elements\XmlNode.cpp" />
+    <ClCompile Include="src\xml\elements\XmlDeclaration.cpp" />
+    <ClCompile Include="src\xml\elements\XmlElement.cpp" />
+    <ClCompile Include="src\xml\elements\XmlText.cpp" />
+    <ClCompile Include="src\xml\elements\XmlComment.cpp" />
+    <ClCompile Include="src\xml\elements\XmlProcessingInstruction.cpp" />
     <ClCompile Include="src\error\InvalidArgumentException.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +42,14 @@
     <ClInclude Include="src\gfx\error\NoGfxException.h" />
     <ClInclude Include="src\resource.h" />
     <ClInclude Include="src\game\Game.h" />
+    <ClInclude Include="src\xml\elements\XmlNode.h" />
+    <ClInclude Include="src\xml\elements\SourcePosition.h" />
+    <ClInclude Include="src\xml\elements\XmlDeclaration.h" />
+    <ClInclude Include="src\xml\elements\XmlElement.h" />
+    <ClInclude Include="src\xml\elements\XmlText.h" />
+    <ClInclude Include="src\xml\elements\XmlMisc.h" />
+    <ClInclude Include="src\xml\elements\XmlComment.h" />
+    <ClInclude Include="src\xml\elements\XmlProcessingInstruction.h" />
     <ClInclude Include="src\error\InvalidArgumentException.h" />
   </ItemGroup>
   <ItemGroup>
