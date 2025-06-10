@@ -1,6 +1,6 @@
 #pragma once
 #include "../../error/BaseException.h"
-#include "../../util/Windoof.h"
+#include "../../util/Wintard.h"
 #include <string>
 
 namespace pkmn::gfx

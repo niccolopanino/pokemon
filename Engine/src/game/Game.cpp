@@ -1,5 +1,7 @@
 #include "Game.h"
+#include "../gfx/Window.h"
 #include "../io/Keyboard.h"
+#include <optional>
 
 namespace pkmn::game
 {

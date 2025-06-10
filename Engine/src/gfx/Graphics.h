@@ -1,12 +1,14 @@
 #pragma once
 #include "../util/Macros.h"
-#include "../util/Windoof.h"
+#include "../util/Wintard.h"
 #ifndef NDEBUG
 #include "DxgiInfoManager.h"
 #endif // !NDEBUG
 #include <d3d11.h>
-#include <wrl.h>
 #include <DirectXMath.h>
+#include <DirectXMathMatrix.inl>
+#include <dxgi.h>
+#include <wrl/client.h>
 
 namespace pkmn::gfx
 {

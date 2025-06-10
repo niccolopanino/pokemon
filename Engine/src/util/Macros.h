@@ -5,9 +5,9 @@
 #include "../gfx/error/DeviceRemovedException.h"
 #include "../gfx/error/GfxInfoException.h"
 //#include "../gfx/error/SurfaceException.h"
-//#include "../error/InvalidArgumentException.h"
+#include "../error/InvalidArgumentException.h"
 #include "../gfx/DxgiInfoManager.h"
-#include "Windoof.h"
+#include "Wintard.h"
 #include <string>
 #include <vector>
 

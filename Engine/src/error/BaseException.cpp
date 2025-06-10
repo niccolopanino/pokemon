@@ -1,6 +1,7 @@
 #include "BaseException.h"
 #include "../util/StringConv.h"
 #include <sstream>
+#include <string>
 
 namespace pkmn
 {

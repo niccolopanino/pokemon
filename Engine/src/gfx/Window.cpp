@@ -1,5 +1,9 @@
 #include "Window.h"
+#include "../gfx/Graphics.h"
+#include "../util/Macros.h"
 #include "../resource.h"
+#include <memory>
+#include <optional>
 
 //------------------------------------------------------------------------------
 //---- Window stuff ------------------------------------------------------------

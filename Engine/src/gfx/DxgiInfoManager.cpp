@@ -1,8 +1,13 @@
 #include "DxgiInfoManager.h"
 #include "../util/Macros.h"
 #include "../util/StringConv.h"
-#include "../util/Windoof.h"
+#include "../util/Wintard.h"
 #include <memory>
+#include <string>
+#include <vector>
+#include <dxgidebug.h>
+#include <guiddef.h>
+#include <libloaderapi.h>
 
 #pragma comment(lib, "dxguid.lib")
 

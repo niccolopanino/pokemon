@@ -1,4 +1,7 @@
 #include "Keyboard.h"
+#include <bitset>
+#include <optional>
+#include <queue>
 
 //------------------------------------------------------------------------------
 //---- Keyboard Event stuff ----------------------------------------------------

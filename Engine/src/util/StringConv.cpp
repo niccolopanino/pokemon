@@ -1,6 +1,6 @@
 #include "StringConv.h"
-
 #include <cstdlib>
+#include <string>
 
 namespace pkmn
 {

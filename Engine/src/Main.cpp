@@ -1,8 +1,9 @@
 #include "error/BaseException.h"
 #include "game/Game.h"
 #include "util/StringConv.h"
-#include "util/Windoof.h"
+#include "util/Wintard.h"
 #include <exception>
+#include <sal.h>
 
 int WINAPI WinMain(_In_ HINSTANCE hinst, _In_opt_ HINSTANCE hprev_instance, _In_ LPSTR lp_cmd_line, _In_ int ncmd_show)
 {

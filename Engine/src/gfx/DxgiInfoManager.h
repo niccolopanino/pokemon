@@ -1,8 +1,8 @@
 #pragma once
-#include <dxgidebug.h>
 #include <string>
 #include <vector>
-#include <wrl.h>
+#include <dxgidebug.h>
+#include <wrl/client.h>
 
 namespace pkmn::gfx
 {
