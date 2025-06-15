@@ -13,7 +13,7 @@
 //---- XmlAttribute stuff ------------------------------------------------------
 //------------------------------------------------------------------------------
 
-namespace pkmn::xml::elem
+namespace pkmn::xml
 {
     std::wstring XmlAttribute::to_wstring() const noexcept
     {
@@ -27,7 +27,7 @@ namespace pkmn::xml::elem
 //---- XmlElement stuff -----------------------------------------------------------
 //------------------------------------------------------------------------------
 
-namespace pkmn::xml::elem
+namespace pkmn::xml
 {
     XmlElement::XmlElement(SourcePosition pos, const std::wstring& tag,
         std::shared_ptr<XmlNode> parent) noexcept

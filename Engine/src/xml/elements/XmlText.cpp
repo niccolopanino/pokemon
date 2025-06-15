@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-namespace pkmn::xml::elem
+namespace pkmn::xml
 {
     XmlText::XmlText(SourcePosition pos, const std::wstring& text,
         std::shared_ptr<XmlNode> parent) noexcept

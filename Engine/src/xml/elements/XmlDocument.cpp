@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-namespace pkmn::xml::elem
+namespace pkmn::xml
 {
     XmlDocument::XmlDocument(std::shared_ptr<XmlElement> root, std::optional<XmlDeclaration> decl) noexcept
         : m_root(root), m_decl(decl)

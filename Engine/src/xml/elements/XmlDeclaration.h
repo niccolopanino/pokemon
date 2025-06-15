@@ -3,7 +3,7 @@
 #include <optional>
 #include <string>
 
-namespace pkmn::xml::elem
+namespace pkmn::xml
 {
     class XmlDeclaration
     {

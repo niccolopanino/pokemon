@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 
-namespace pkmn::xml::elem
+namespace pkmn::xml
 {
 	class XmlComment : public XmlMisc
 	{

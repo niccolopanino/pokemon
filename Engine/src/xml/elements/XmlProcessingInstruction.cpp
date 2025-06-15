@@ -11,7 +11,7 @@
 #include <sstream>
 #include <string>
 
-namespace pkmn::xml::elem
+namespace pkmn::xml
 {
     XmlProcessingInstruction::XmlProcessingInstruction(SourcePosition pos, const std::wstring& target,
         std::shared_ptr<XmlNode> parent, std::optional<std::wstring> data) noexcept

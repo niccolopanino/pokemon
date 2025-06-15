@@ -3,7 +3,7 @@
 #include <memory>
 #include <string>
 
-namespace pkmn::xml::elem
+namespace pkmn::xml
 {
     XmlNode::XmlNode(SourcePosition pos, std::shared_ptr<XmlNode> parent) noexcept
         : m_pos(pos), m_parent(parent)

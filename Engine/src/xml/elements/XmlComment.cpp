@@ -6,7 +6,7 @@
 #include <sstream>
 #include <string>
 
-namespace pkmn::xml::elem
+namespace pkmn::xml
 {
     XmlComment::XmlComment(SourcePosition pos, const std::wstring& comment,
         std::shared_ptr<XmlNode> parent) noexcept

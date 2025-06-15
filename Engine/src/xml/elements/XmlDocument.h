@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-namespace pkmn::xml::elem
+namespace pkmn::xml
 {
 	class XmlDocument
 	{

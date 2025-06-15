@@ -4,7 +4,7 @@
 #include <sstream>
 #include <string>
 
-namespace pkmn::xml::elem
+namespace pkmn::xml
 {
     XmlDeclaration::XmlDeclaration(SourcePosition pos, const std::wstring& version,
         bool standalone) noexcept
