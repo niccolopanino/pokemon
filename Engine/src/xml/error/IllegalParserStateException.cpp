@@ -9,7 +9,7 @@
 namespace pkmn::xml
 {
     IllegalParserStateException::IllegalParserStateException(int line, const wchar_t* file,
-        const SourcePosition& pos, ParserState state)
+        const SourcePosition& pos, ParserState state) noexcept
         : XmlParserException(line, file, pos), m_state(state)
     { }
 
