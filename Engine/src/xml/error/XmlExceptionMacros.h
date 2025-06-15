@@ -5,8 +5,8 @@
 #include "XmlParserException.h"
 #include <corecrt.h>
 
-#define XMLPARSEERR(srcpos) pkmn::xml::XmlParserException(__LINE__, __FILEW__, srcpos)
-#define XMLPARSEERRNOTE(srcpos, note) \
+#define XMLPARSEERRNONOTE(srcpos) pkmn::xml::XmlParserException(__LINE__, __FILEW__, srcpos)
+#define XMLPARSEERR(srcpos, note) \
     pkmn::xml::XmlParserException(__LINE__, __FILEW__, srcpos, note)
 #define XMLCHARSEQERR(srcpos, expected, actual) \
     pkmn::xml::UnexpectedCharSequenceException(__LINE__, __FILEW__, srcpos, expected, actual)
