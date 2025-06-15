@@ -1,6 +1,7 @@
 #pragma once
 #include "Wintard.h"
 #include "../error/InvalidArgumentException.h"
+#include "../error/NotSupportedException.h"
 #include "../gfx/DxgiInfoManager.h"
 #include "../gfx/error/DeviceRemovedException.h"
 #include "../gfx/error/GfxInfoException.h"
@@ -76,3 +77,5 @@
 
 #define INVALIDARG(note) pkmn::InvalidArgumentException(__LINE__, __FILEW__, note)
 #define INVALIDARGNAME(note, argname) pkmn::InvalidArgumentException(__LINE__, __FILEW__, note, argname)
+
+#define NOTSUPPORTED(feature) pkmn::NotSupportedException(__LINE__, __FILEW__, feature)

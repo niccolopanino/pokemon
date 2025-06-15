@@ -29,6 +29,7 @@
     <ClCompile Include="src\xml\error\UnexpectedEofException.cpp" />
     <ClCompile Include="src\xml\error\IllegalParserStateException.cpp" />
     <ClCompile Include="src\xml\error\UnexpectedCharSequenceException.cpp" />
+    <ClCompile Include="src\error\NotSupportedException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\util\Wintard.h" />
@@ -64,6 +65,7 @@
     <ClInclude Include="src\xml\error\UnexpectedEofException.h" />
     <ClInclude Include="src\xml\error\IllegalParserStateException.h" />
     <ClInclude Include="src\xml\error\UnexpectedCharSequenceException.h" />
+    <ClInclude Include="src\error\NotSupportedException.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\gfx\error\dxerr\DXGetErrorDescription.inl" />
