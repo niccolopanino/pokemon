@@ -7,6 +7,7 @@
 #include <sstream>
 #include <string>
 #include <typeinfo>
+#include <utility>
 #include <vector>
 
 //------------------------------------------------------------------------------
@@ -15,6 +16,36 @@
 
 namespace pkmn::xml
 {
+    XmlAttribute::XmlAttribute(const std::wstring& name, const std::wstring& value) noexcept
+        : m_name(name), m_value(value)
+    { }
+
+    XmlAttribute::XmlAttribute(std::wstring&& name, std::wstring&& value) noexcept
+        : m_name(name), m_value(value)
+    { }
+
+    XmlAttribute::XmlAttribute(const XmlAttribute& attr) noexcept
+        : m_name(attr.m_name), m_value(attr.m_value)
+    { }
+
+    XmlAttribute::XmlAttribute(XmlAttribute&& attr) noexcept
+        : m_name(std::move(attr.m_name)), m_value(std::move(attr.m_value))
+    { }
+
+    XmlAttribute& XmlAttribute::operator=(const XmlAttribute& attr) noexcept
+    {
+        m_name = attr.m_name;
+        m_value = attr.m_value;
+        return *this;
+    }
+
+    XmlAttribute& XmlAttribute::operator=(XmlAttribute&& attr) noexcept
+    {
+        m_name = std::move(attr.m_name);
+        m_value = std::move(attr.m_value);
+        return *this;
+    }
+
     std::wstring XmlAttribute::to_wstring() const noexcept
     {
         std::wostringstream wos;
