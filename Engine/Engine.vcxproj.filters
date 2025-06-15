@@ -25,6 +25,10 @@
     <ClCompile Include="src\xml\elements\XmlProcessingInstruction.cpp" />
     <ClCompile Include="src\error\InvalidArgumentException.cpp" />
     <ClCompile Include="src\xml\elements\XmlDocument.cpp" />
+    <ClCompile Include="src\xml\error\XmlParserException.cpp" />
+    <ClCompile Include="src\xml\error\UnexpectedEofException.cpp" />
+    <ClCompile Include="src\xml\error\IllegalParserStateException.cpp" />
+    <ClCompile Include="src\xml\error\UnexpectedCharSequenceException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\util\Wintard.h" />
@@ -55,6 +59,11 @@
     <ClInclude Include="src\xml\elements\XmlProcessingInstruction.h" />
     <ClInclude Include="src\error\InvalidArgumentException.h" />
     <ClInclude Include="src\xml\elements\XmlDocument.h" />
+    <ClInclude Include="src\xml\error\XmlExceptionMacros.h" />
+    <ClInclude Include="src\xml\error\XmlParserException.h" />
+    <ClInclude Include="src\xml\error\UnexpectedEofException.h" />
+    <ClInclude Include="src\xml\error\IllegalParserStateException.h" />
+    <ClInclude Include="src\xml\error\UnexpectedCharSequenceException.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\gfx\error\dxerr\DXGetErrorDescription.inl" />

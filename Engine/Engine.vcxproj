@@ -154,6 +154,10 @@
     <ClCompile Include="src\xml\elements\XmlElement.cpp" />
     <ClCompile Include="src\xml\elements\XmlProcessingInstruction.cpp" />
     <ClCompile Include="src\xml\elements\XmlText.cpp" />
+    <ClCompile Include="src\xml\error\IllegalParserStateException.cpp" />
+    <ClCompile Include="src\xml\error\UnexpectedCharSequenceException.cpp" />
+    <ClCompile Include="src\xml\error\UnexpectedEofException.cpp" />
+    <ClCompile Include="src\xml\error\XmlParserException.cpp" />
     <ClCompile Include="src\xml\parser\ParserState.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +188,11 @@
     <ClInclude Include="src\xml\elements\XmlNode.h" />
     <ClInclude Include="src\xml\elements\XmlProcessingInstruction.h" />
     <ClInclude Include="src\xml\elements\XmlText.h" />
+    <ClInclude Include="src\xml\error\IllegalParserStateException.h" />
+    <ClInclude Include="src\xml\error\UnexpectedCharSequenceException.h" />
+    <ClInclude Include="src\xml\error\UnexpectedEofException.h" />
+    <ClInclude Include="src\xml\error\XmlExceptionMacros.h" />
+    <ClInclude Include="src\xml\error\XmlParserException.h" />
     <ClInclude Include="src\xml\parser\ParserState.h" />
   </ItemGroup>
   <ItemGroup>

@@ -1,13 +1,14 @@
 #pragma once
-#include "../gfx/error/HResWinException.h"
-#include "../gfx/error/NoGfxException.h"
-#include "../gfx/error/HResGfxException.h"
-#include "../gfx/error/DeviceRemovedException.h"
-#include "../gfx/error/GfxInfoException.h"
-//#include "../gfx/error/SurfaceException.h"
+#include "Wintard.h"
 #include "../error/InvalidArgumentException.h"
 #include "../gfx/DxgiInfoManager.h"
-#include "Wintard.h"
+#include "../gfx/error/DeviceRemovedException.h"
+#include "../gfx/error/GfxInfoException.h"
+#include "../gfx/error/HResGfxException.h"
+#include "../gfx/error/HResWinException.h"
+#include "../gfx/error/NoGfxException.h"
+//#include "../gfx/error/SurfaceException.h"
+#include <corecrt.h>
 #include <string>
 #include <vector>
 
