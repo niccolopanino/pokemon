@@ -18,7 +18,7 @@ namespace pkmn::xml
 		const std::optional<std::wstring>& get_note() const noexcept;
 		virtual const char* what() const noexcept override;
 	private:
-		SourcePosition m_pos;
+		SourcePosition m_src_pos;
 		std::optional<std::wstring> m_note;
 	};
 }

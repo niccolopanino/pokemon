@@ -11,7 +11,7 @@ namespace pkmn::xml
 {
     XmlParserException::XmlParserException(int line, const wchar_t* file, const SourcePosition& pos,
         const std::optional<std::wstring>& note) noexcept
-        : BaseException(line, file), m_pos(pos), m_note(note)
+        : BaseException(line, file), m_src_pos(pos), m_note(note)
     { }
 
     const wchar_t* XmlParserException::get_type() const noexcept
@@ -21,15 +21,15 @@ namespace pkmn::xml
 
     const SourcePosition& XmlParserException::get_src_pos() const noexcept
     {
-        return m_pos;
+        return m_src_pos;
     }
 
     std::wstring XmlParserException::get_src_pos_string() const noexcept
     {
         std::wostringstream wos;
-        wos << L"[XML File] " << m_pos.m_file << std::endl
-            << L"[at Line:Character] " << std::to_wstring(m_pos.m_line)
-            << L':' << std::to_wstring(m_pos.m_col);
+        wos << L"[XML File] " << m_src_pos.m_file << std::endl
+            << L"[at Line:Character] " << std::to_wstring(m_src_pos.m_line)
+            << L':' << std::to_wstring(m_src_pos.m_col);
         return wos.str();
     }
 
