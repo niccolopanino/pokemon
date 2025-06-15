@@ -18,9 +18,19 @@ namespace pkmn::xml
         return m_decl;
     }
 
+    void XmlDocument::set_xml_decl(XmlDeclaration&& decl) noexcept
+    {
+        m_decl = decl;
+    }
+
     std::shared_ptr<XmlElement> XmlDocument::get_root() const noexcept
     {
         return m_root;
+    }
+
+    void XmlDocument::set_root(std::shared_ptr<XmlElement> root) noexcept
+    {
+        m_root = root;
     }
 
     const std::vector<std::shared_ptr<XmlMisc>>& XmlDocument::get_pre_root_misc_stuff() const noexcept
@@ -28,8 +38,18 @@ namespace pkmn::xml
         return m_pre_root_misc;
     }
 
+    void XmlDocument::add_misc_stuff_pre_root(std::shared_ptr<XmlMisc> misc) noexcept
+    {
+        m_pre_root_misc.push_back(misc);
+    }
+
     const std::vector<std::shared_ptr<XmlMisc>>& XmlDocument::get_post_root_misc_stuff() const noexcept
     {
         return m_post_root_misc;
+    }
+
+    void XmlDocument::add_misc_stuff_post_root(std::shared_ptr<XmlMisc> misc) noexcept
+    {
+        m_post_root_misc.push_back(misc);
     }
 }

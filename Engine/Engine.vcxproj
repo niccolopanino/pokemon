@@ -160,6 +160,7 @@
     <ClCompile Include="src\xml\error\UnexpectedEofException.cpp" />
     <ClCompile Include="src\xml\error\XmlParserException.cpp" />
     <ClCompile Include="src\xml\parser\ParserState.cpp" />
+    <ClCompile Include="src\xml\parser\XmlParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\error\InvalidArgumentException.h" />
@@ -196,6 +197,7 @@
     <ClInclude Include="src\xml\error\XmlExceptionMacros.h" />
     <ClInclude Include="src\xml\error\XmlParserException.h" />
     <ClInclude Include="src\xml\parser\ParserState.h" />
+    <ClInclude Include="src\xml\parser\XmlParser.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\cpp.hint" />

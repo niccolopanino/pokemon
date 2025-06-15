@@ -60,12 +60,12 @@ namespace pkmn::xml
 
 namespace pkmn::xml
 {
-    XmlElement::XmlElement(SourcePosition pos, const std::wstring& tag,
+    XmlElement::XmlElement(SourcePosition pos, std::wstring&& tag,
         std::shared_ptr<XmlNode> parent) noexcept
         : XmlNode(pos, parent), m_tagname(tag)
     { }
 
-    XmlElement::XmlElement(SourcePosition pos, const std::wstring& tag,
+    XmlElement::XmlElement(SourcePosition pos, std::wstring&& tag,
         const std::vector<XmlAttribute>& attr, std::shared_ptr<XmlNode> parent) noexcept
         : XmlNode(pos, parent), m_tagname(tag)
     {
@@ -130,9 +130,9 @@ namespace pkmn::xml
         m_tagname = name;
     }
 
-    void XmlElement::add_attribute(const XmlAttribute& attr) noexcept
+    void XmlElement::add_attribute(XmlAttribute&& attr) noexcept
     {
-        m_attributes.push_back({ attr.m_name, attr.m_value });
+        m_attributes.push_back(std::move(attr));
     }
 
     bool XmlElement::set_attr_value(const std::wstring& attr, const std::wstring& value) noexcept

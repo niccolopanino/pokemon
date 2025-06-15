@@ -13,7 +13,7 @@
 
 namespace pkmn::xml
 {
-    XmlProcessingInstruction::XmlProcessingInstruction(SourcePosition pos, const std::wstring& target,
+    XmlProcessingInstruction::XmlProcessingInstruction(SourcePosition pos, std::wstring&& target,
         std::shared_ptr<XmlNode> parent, std::optional<std::wstring> data) noexcept
         : XmlMisc(pos, parent), m_targetname(target), m_data(data)
     { }

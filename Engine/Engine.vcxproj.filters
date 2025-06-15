@@ -25,6 +25,7 @@
     <ClCompile Include="src\xml\elements\XmlProcessingInstruction.cpp" />
     <ClCompile Include="src\error\InvalidArgumentException.cpp" />
     <ClCompile Include="src\xml\elements\XmlDocument.cpp" />
+    <ClCompile Include="src\xml\parser\XmlParser.cpp" />
     <ClCompile Include="src\xml\error\XmlParserException.cpp" />
     <ClCompile Include="src\xml\error\UnexpectedEofException.cpp" />
     <ClCompile Include="src\xml\error\IllegalParserStateException.cpp" />
@@ -61,6 +62,7 @@
     <ClInclude Include="src\error\InvalidArgumentException.h" />
     <ClInclude Include="src\xml\elements\XmlDocument.h" />
     <ClInclude Include="src\xml\error\XmlExceptionMacros.h" />
+    <ClInclude Include="src\xml\parser\XmlParser.h" />
     <ClInclude Include="src\xml\error\XmlParserException.h" />
     <ClInclude Include="src\xml\error\UnexpectedEofException.h" />
     <ClInclude Include="src\xml\error\IllegalParserStateException.h" />

@@ -9,10 +9,10 @@ namespace pkmn::xml
     class XmlDeclaration : public XmlNode
     {
     public:
-        XmlDeclaration(SourcePosition pos, const std::wstring& version,
+        XmlDeclaration(SourcePosition pos, std::wstring&& version,
             bool standalone = true) noexcept;
-        XmlDeclaration(SourcePosition pos, const std::wstring& version,
-            const std::wstring& encoding, bool standalone = true) noexcept;
+        XmlDeclaration(SourcePosition pos, std::wstring&& version,
+            std::wstring&& encoding, bool standalone = true) noexcept;
     public:
         const std::wstring& get_version() const noexcept;
         const std::wstring& get_encoding() const noexcept;
