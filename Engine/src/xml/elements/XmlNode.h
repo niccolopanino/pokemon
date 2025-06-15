@@ -16,7 +16,7 @@ namespace pkmn::xml
         virtual std::wstring to_wstring(size_t indent_level = 0u,
             size_t indent_size = 4u) const noexcept = 0;
     protected:
-        SourcePosition m_pos;
+        SourcePosition m_src_pos;
         std::shared_ptr<XmlNode> m_parent;
     };
 }

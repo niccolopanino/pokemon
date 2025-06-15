@@ -1,11 +1,12 @@
 #pragma once
 #include "SourcePosition.h"
+#include "XmlNode.h"
 #include <optional>
 #include <string>
 
 namespace pkmn::xml
 {
-    class XmlDeclaration
+    class XmlDeclaration : public XmlNode
     {
     public:
         XmlDeclaration(SourcePosition pos, const std::wstring& version,
@@ -18,7 +19,6 @@ namespace pkmn::xml
         std::optional<bool> is_standalone() const noexcept;
         std::wstring to_wstring(size_t indent_level = 0u, size_t indent_size = 4u) const noexcept;
     private:
-        SourcePosition m_pos;
         std::wstring m_version;
         std::wstring m_encoding;
         std::optional<bool> m_standalone;

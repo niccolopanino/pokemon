@@ -6,12 +6,12 @@
 namespace pkmn::xml
 {
     XmlNode::XmlNode(SourcePosition pos, std::shared_ptr<XmlNode> parent) noexcept
-        : m_pos(pos), m_parent(parent)
+        : m_src_pos(pos), m_parent(parent)
     { }
 
     const SourcePosition& XmlNode::get_pos() const noexcept
     {
-        return m_pos;
+        return m_src_pos;
     }
 
     std::shared_ptr<XmlNode> XmlNode::get_parent() noexcept

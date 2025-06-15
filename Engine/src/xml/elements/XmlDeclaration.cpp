@@ -1,5 +1,6 @@
 #include "SourcePosition.h"
 #include "XmlDeclaration.h"
+#include "XmlNode.h"
 #include <optional>
 #include <sstream>
 #include <string>
@@ -8,12 +9,12 @@ namespace pkmn::xml
 {
     XmlDeclaration::XmlDeclaration(SourcePosition pos, const std::wstring& version,
         bool standalone) noexcept
-        : m_pos(pos), m_version(version), m_standalone(standalone)
+        : XmlNode(pos, nullptr), m_version(version), m_standalone(standalone)
     { }
 
     XmlDeclaration::XmlDeclaration(SourcePosition pos, const std::wstring& version,
         const std::wstring& encoding, bool standalone) noexcept
-        : m_pos(pos), m_version(version), m_encoding(encoding), m_standalone(standalone)
+        : XmlNode(pos, nullptr), m_version(version), m_encoding(encoding), m_standalone(standalone)
     { }
 
     const std::wstring& XmlDeclaration::get_version() const noexcept
