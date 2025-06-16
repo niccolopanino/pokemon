@@ -1,5 +1,6 @@
 #pragma once
 #include "HResBaseException.h"
+#include "../../util/Wintard.h"
 #include <string>
 
 namespace pkmn::gfx

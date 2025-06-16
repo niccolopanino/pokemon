@@ -1,7 +1,6 @@
 #include "SourcePosition.h"
 #include "XmlNode.h"
 #include <memory>
-#include <string>
 
 namespace pkmn::xml
 {
