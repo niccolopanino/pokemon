@@ -8,8 +8,9 @@ namespace pkmn::xml
     class XmlNode
     {
     public:
-        XmlNode(SourcePosition pos, std::shared_ptr<XmlNode> parent) noexcept;
         virtual ~XmlNode() = default;
+    protected:
+        XmlNode(SourcePosition pos, std::shared_ptr<XmlNode> parent) noexcept;
     public:
         const SourcePosition& get_pos() const noexcept;
         std::shared_ptr<XmlNode> get_parent() noexcept;
