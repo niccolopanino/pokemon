@@ -1,5 +1,6 @@
 #pragma once
 #include "SourcePosition.h"
+#include "XmlAttribute.h"
 #include "XmlNode.h"
 #include <memory>
 #include <optional>
@@ -8,23 +9,6 @@
 
 namespace pkmn::xml
 {
-    struct XmlAttribute
-    {
-    public:
-        XmlAttribute(const std::wstring& name, const std::wstring& value) noexcept;
-        XmlAttribute(std::wstring&& name, std::wstring&& value) noexcept;
-        XmlAttribute(const XmlAttribute& attr) noexcept;
-        XmlAttribute(XmlAttribute&& attr) noexcept;
-    public:
-        XmlAttribute& operator=(const XmlAttribute& attr) noexcept;
-        XmlAttribute& operator=(XmlAttribute&& attr) noexcept;
-    public:
-        std::wstring to_wstring() const noexcept;
-    public:
-        std::wstring m_name;
-        std::wstring m_value;
-    };
-
     class XmlElement : public XmlNode
     {
     public:

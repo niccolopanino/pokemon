@@ -148,6 +148,7 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\util\StringConv.cpp" />
     <ClCompile Include="src\gfx\Window.cpp" />
+    <ClCompile Include="src\xml\elements\XmlAttribute.cpp" />
     <ClCompile Include="src\xml\elements\XmlComment.cpp" />
     <ClCompile Include="src\xml\elements\XmlDeclaration.cpp" />
     <ClCompile Include="src\xml\elements\XmlDocument.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="src\util\Wintard.h" />
     <ClInclude Include="src\gfx\Window.h" />
     <ClInclude Include="src\xml\elements\SourcePosition.h" />
+    <ClInclude Include="src\xml\elements\XmlAttribute.h" />
     <ClInclude Include="src\xml\elements\XmlComment.h" />
     <ClInclude Include="src\xml\elements\XmlDeclaration.h" />
     <ClInclude Include="src\xml\elements\XmlDocument.h" />

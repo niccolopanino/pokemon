@@ -1,4 +1,5 @@
 #include "SourcePosition.h"
+#include "XmlAttribute.h"
 #include "XmlElement.h"
 #include "XmlNode.h"
 #include <memory>
@@ -9,54 +10,6 @@
 #include <typeinfo>
 #include <utility>
 #include <vector>
-
-//------------------------------------------------------------------------------
-//---- XmlAttribute stuff ------------------------------------------------------
-//------------------------------------------------------------------------------
-
-namespace pkmn::xml
-{
-    XmlAttribute::XmlAttribute(const std::wstring& name, const std::wstring& value) noexcept
-        : m_name(name), m_value(value)
-    { }
-
-    XmlAttribute::XmlAttribute(std::wstring&& name, std::wstring&& value) noexcept
-        : m_name(name), m_value(value)
-    { }
-
-    XmlAttribute::XmlAttribute(const XmlAttribute& attr) noexcept
-        : m_name(attr.m_name), m_value(attr.m_value)
-    { }
-
-    XmlAttribute::XmlAttribute(XmlAttribute&& attr) noexcept
-        : m_name(std::move(attr.m_name)), m_value(std::move(attr.m_value))
-    { }
-
-    XmlAttribute& XmlAttribute::operator=(const XmlAttribute& attr) noexcept
-    {
-        m_name = attr.m_name;
-        m_value = attr.m_value;
-        return *this;
-    }
-
-    XmlAttribute& XmlAttribute::operator=(XmlAttribute&& attr) noexcept
-    {
-        m_name = std::move(attr.m_name);
-        m_value = std::move(attr.m_value);
-        return *this;
-    }
-
-    std::wstring XmlAttribute::to_wstring() const noexcept
-    {
-        std::wostringstream wos;
-        wos << m_name << L"=\"" << m_value << L"\"";
-        return wos.str();
-    }
-}
-
-//------------------------------------------------------------------------------
-//---- XmlElement stuff -----------------------------------------------------------
-//------------------------------------------------------------------------------
 
 namespace pkmn::xml
 {

@@ -1,6 +1,7 @@
 #pragma once
 #include "ParserState.h"
 #include "../elements/SourcePosition.h"
+#include "../elements/XmlAttribute.h"
 #include "../elements/XmlDeclaration.h"
 #include "../elements/XmlDocument.h"
 #include "../elements/XmlElement.h"

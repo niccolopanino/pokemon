@@ -1,6 +1,7 @@
 #include "ParserState.h"
 #include "XmlParser.h"
 #include "../elements/SourcePosition.h"
+#include "../elements/XmlAttribute.h"
 #include "../elements/XmlComment.h"
 #include "../elements/XmlDeclaration.h"
 #include "../elements/XmlDocument.h"
