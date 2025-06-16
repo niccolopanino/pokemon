@@ -9,7 +9,7 @@
 
 namespace pkmn::xml
 {
-    XmlText::XmlText(SourcePosition pos, std::wstring&& text, std::shared_ptr<XmlNode> parent) noexcept
+    XmlText::XmlText(SourcePosition pos, std::wstring text, std::shared_ptr<XmlNode> parent) noexcept
         : XmlNode(pos, parent), m_text(text)
     { }
 

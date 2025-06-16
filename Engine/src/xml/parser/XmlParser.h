@@ -18,14 +18,14 @@ namespace pkmn::xml
 	class XmlParser
 	{
 	public:
-		static XmlDocument parse_file(const std::wstring& path);
+		static XmlDocument parse_file(std::wstring path);
 	private:
 		static void init();
 	private:
 		static bool s_initialized;
 		static std::unordered_set<wchar_t> s_whitespaces;
 	private:
-		XmlParser(const std::wstring& path) noexcept;
+		XmlParser(std::wstring path) noexcept;
 	private:
 		void set_state(ParserState next_state) noexcept;
 		void push_state(ParserState next_state);

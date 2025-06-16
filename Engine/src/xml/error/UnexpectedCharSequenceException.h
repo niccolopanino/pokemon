@@ -8,8 +8,8 @@ namespace pkmn::xml
 	class UnexpectedCharSequenceException : public XmlParserException
 	{
 	public:
-		UnexpectedCharSequenceException(int line, const wchar_t* file, const SourcePosition& pos,
-			const std::wstring& expected, const std::wstring& actual) noexcept;
+		UnexpectedCharSequenceException(int line, const wchar_t* file, SourcePosition pos,
+			std::wstring expected, std::wstring actual) noexcept;
 	public:
 		virtual const wchar_t* get_type() const noexcept override;
 		const std::wstring& get_expected_string() const noexcept;

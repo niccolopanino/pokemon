@@ -7,12 +7,12 @@
 
 namespace pkmn::xml
 {
-    XmlDeclaration::XmlDeclaration(SourcePosition pos, std::wstring&& version, bool standalone) noexcept
+    XmlDeclaration::XmlDeclaration(SourcePosition pos, std::wstring version, bool standalone) noexcept
         : XmlNode(pos, nullptr), m_version(version), m_standalone(standalone)
     { }
 
-    XmlDeclaration::XmlDeclaration(SourcePosition pos, std::wstring&& version,
-        std::wstring&& encoding, bool standalone) noexcept
+    XmlDeclaration::XmlDeclaration(SourcePosition pos, std::wstring version,
+        std::wstring encoding, bool standalone) noexcept
         : XmlNode(pos, nullptr), m_version(version), m_encoding(encoding), m_standalone(standalone)
     { }
 

@@ -13,12 +13,12 @@
 
 namespace pkmn::xml
 {
-    XmlElement::XmlElement(SourcePosition pos, std::wstring&& tag,
+    XmlElement::XmlElement(SourcePosition pos, std::wstring tag,
         std::shared_ptr<XmlNode> parent) noexcept
         : XmlNode(pos, parent), m_tagname(tag)
     { }
 
-    XmlElement::XmlElement(SourcePosition pos, std::wstring&& tag,
+    XmlElement::XmlElement(SourcePosition pos, std::wstring tag,
         const std::vector<XmlAttribute>& attr, std::shared_ptr<XmlNode> parent) noexcept
         : XmlNode(pos, parent), m_tagname(tag)
     {
@@ -37,7 +37,7 @@ namespace pkmn::xml
         return m_attributes;
     }
 
-    std::optional<std::wstring> XmlElement::get_attr_value(const std::wstring& attr) const noexcept
+    std::optional<std::wstring> XmlElement::get_attr_value(std::wstring attr) const noexcept
     {
         for (size_t i = 0u; i < m_attributes.size(); i++) {
             if (m_attributes[i].m_name == attr)
@@ -57,7 +57,7 @@ namespace pkmn::xml
     }
 
     std::vector<std::shared_ptr<XmlElement>>
-    XmlElement::get_filtered_children(const std::wstring& tagname_filter) const noexcept
+    XmlElement::get_filtered_children(std::wstring tagname_filter) const noexcept
     {
         std::vector<std::shared_ptr<XmlElement>> filtered_children;
 
@@ -78,7 +78,7 @@ namespace pkmn::xml
         return filtered_children;
     }
 
-    void XmlElement::set_name(const std::wstring& name) noexcept
+    void XmlElement::set_name(std::wstring name) noexcept
     {
         m_tagname = name;
     }
@@ -88,7 +88,7 @@ namespace pkmn::xml
         m_attributes.push_back(std::move(attr));
     }
 
-    bool XmlElement::set_attr_value(const std::wstring& attr, const std::wstring& value) noexcept
+    bool XmlElement::set_attr_value(std::wstring attr, std::wstring value) noexcept
     {
         for (size_t i = 0u; i < m_attributes.size(); i++) {
             if (m_attributes[i].m_name == attr) {

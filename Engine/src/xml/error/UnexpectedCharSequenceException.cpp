@@ -9,7 +9,7 @@
 namespace pkmn::xml
 {
     UnexpectedCharSequenceException::UnexpectedCharSequenceException(int line, const wchar_t* file,
-        const SourcePosition& pos, const std::wstring& expected, const std::wstring& actual) noexcept
+        SourcePosition pos, std::wstring expected, std::wstring actual) noexcept
         : XmlParserException(line, file, pos), m_expected(expected), m_actual(actual)
     { }
 

@@ -8,7 +8,7 @@
 
 namespace pkmn::xml
 {
-    XmlComment::XmlComment(SourcePosition pos, const std::wstring& comment,
+    XmlComment::XmlComment(SourcePosition pos, std::wstring comment,
         std::shared_ptr<XmlNode> parent) noexcept
         : XmlMisc(pos, parent), m_comment(comment)
     { }

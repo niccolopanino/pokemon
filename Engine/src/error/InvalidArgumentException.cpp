@@ -9,7 +9,7 @@
 namespace pkmn
 {
     InvalidArgumentException::InvalidArgumentException(int line, const wchar_t* file,
-        const std::wstring& note, std::optional<std::wstring> argname) noexcept
+        std::wstring note, std::optional<std::wstring> argname) noexcept
         : BaseException(line, file), m_note(note), m_argname(argname)
     { }
 

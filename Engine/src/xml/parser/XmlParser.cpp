@@ -26,7 +26,7 @@ namespace pkmn::xml
     bool XmlParser::s_initialized;
     std::unordered_set<wchar_t> XmlParser::s_whitespaces;
 
-    XmlDocument XmlParser::parse_file(const std::wstring& path)
+    XmlDocument XmlParser::parse_file(std::wstring path)
     {
         return XmlParser(path).read_xml_doc();
     }
@@ -45,7 +45,7 @@ namespace pkmn::xml
         s_initialized = true;
     }
 
-    XmlParser::XmlParser(const std::wstring& path) noexcept
+    XmlParser::XmlParser(std::wstring path) noexcept
         : m_src_pos({ path, 0u, 0u }), m_state(ParserState::e_null)
     {
         XmlParser::init();

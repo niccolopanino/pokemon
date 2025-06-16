@@ -7,7 +7,7 @@
 
 namespace pkmn
 {
-    NotSupportedException::NotSupportedException(int line, const wchar_t* file, std::wstring&& feature) noexcept
+    NotSupportedException::NotSupportedException(int line, const wchar_t* file, std::wstring feature) noexcept
         : BaseException(line, file), m_feature(feature)
     { }
 
