@@ -5,12 +5,13 @@
 #include <memory>
 #include <sstream>
 #include <string>
+#include <utility>
 
 namespace pkmn::xml
 {
-    XmlComment::XmlComment(SourcePosition pos, std::wstring comment,
+    XmlComment::XmlComment(SourcePosition pos, std::wstring&& comment,
         std::shared_ptr<XmlNode> parent) noexcept
-        : XmlMisc(pos, parent), m_comment(comment)
+        : XmlMisc(pos, parent), m_comment(std::move(comment))
     { }
 
     const std::wstring& XmlComment::get_comment() const noexcept

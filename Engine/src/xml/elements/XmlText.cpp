@@ -5,12 +5,13 @@
 #include <ostream>
 #include <sstream>
 #include <string>
+#include <utility>
 #include <vector>
 
 namespace pkmn::xml
 {
-    XmlText::XmlText(SourcePosition pos, std::wstring text, std::shared_ptr<XmlNode> parent) noexcept
-        : XmlNode(pos, parent), m_text(text)
+    XmlText::XmlText(SourcePosition pos, std::wstring&& text, std::shared_ptr<XmlNode> parent) noexcept
+        : XmlNode(pos, parent), m_text(std::move(text))
     { }
 
     const std::wstring& XmlText::get_text() const noexcept

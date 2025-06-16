@@ -13,19 +13,10 @@
 
 namespace pkmn::xml
 {
-    XmlElement::XmlElement(SourcePosition pos, std::wstring tag,
+    XmlElement::XmlElement(SourcePosition pos, std::wstring&& tag,
         std::shared_ptr<XmlNode> parent) noexcept
-        : XmlNode(pos, parent), m_tagname(tag)
+        : XmlNode(pos, parent), m_tagname(std::move(tag))
     { }
-
-    XmlElement::XmlElement(SourcePosition pos, std::wstring tag,
-        const std::vector<XmlAttribute>& attr, std::shared_ptr<XmlNode> parent) noexcept
-        : XmlNode(pos, parent), m_tagname(tag)
-    {
-        m_attributes.reserve(attr.size());
-        for (size_t i = 0u; i < attr.size(); i++)
-            m_attributes[i] = { attr[i].m_name, attr[i].m_value };
-    }
 
     const std::wstring& XmlElement::get_name() const noexcept
     {

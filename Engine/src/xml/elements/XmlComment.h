@@ -10,7 +10,7 @@ namespace pkmn::xml
 	class XmlComment : public XmlMisc
 	{
 	public:
-		XmlComment(SourcePosition pos, std::wstring comment,
+		XmlComment(SourcePosition pos, std::wstring&& comment,
 			std::shared_ptr<XmlNode> parent = nullptr) noexcept;
 	public:
 		const std::wstring& get_comment() const noexcept;

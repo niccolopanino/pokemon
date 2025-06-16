@@ -11,8 +11,8 @@ namespace pkmn::xml
 	class XmlProcessingInstruction : public XmlMisc
 	{
 	public:
-		XmlProcessingInstruction(SourcePosition pos, std::wstring target,
-			std::shared_ptr<XmlNode> parent, std::optional<std::wstring> data = { }) noexcept;
+		XmlProcessingInstruction(SourcePosition pos, std::wstring&& target,
+			std::shared_ptr<XmlNode> parent, std::optional<std::wstring>&& data = { }) noexcept;
 	public:
 		const std::wstring& get_target() const noexcept;
 		const std::optional<std::wstring>& get_data() const noexcept;

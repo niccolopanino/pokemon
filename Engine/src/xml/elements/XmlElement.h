@@ -12,10 +12,8 @@ namespace pkmn::xml
     class XmlElement : public XmlNode
     {
     public:
-        XmlElement(SourcePosition pos, std::wstring tag,
+        XmlElement(SourcePosition pos, std::wstring&& tag,
             std::shared_ptr<XmlNode> parent = nullptr) noexcept;
-        XmlElement(SourcePosition pos, std::wstring tag,
-            const std::vector<XmlAttribute>& attr, std::shared_ptr<XmlNode> parent = nullptr) noexcept;
     public:
         const std::wstring& get_name() const noexcept;
         const std::vector<XmlAttribute>& get_attributes() const noexcept;
