@@ -10,7 +10,6 @@
 #include "../elements/XmlText.h"
 #include "../error/XmlExceptionMacros.h"
 #include "../../util/Macros.h"
-#include <corecrt.h>
 #include <cctype>
 #include <fstream>
 #include <memory>
@@ -20,6 +19,9 @@
 #include <unordered_set>
 #include <utility>
 #include <vector>
+#include <corecrt.h>
+#include <stringapiset.h>
+#include <WinNls.h>
 
 namespace pkmn::xml
 {
@@ -28,7 +30,29 @@ namespace pkmn::xml
 
     XmlDocument XmlParser::parse_file(const std::wstring& path)
     {
-        return XmlParser(path).read_xml_doc();
+        // read content from xml file int string buffer
+        std::ifstream ifs;
+        ifs.exceptions(ifs.badbit | ifs.failbit);
+        ifs.open(path, std::ios::in | std::ios::binary | std::ios::ate);
+
+        std::streampos size = ifs.tellg();
+        std::string mb_file_content;
+        mb_file_content.resize(size);
+        ifs.seekg(0, std::ios::beg);
+        ifs.read(&mb_file_content[0], size);
+
+        ifs.close();
+
+        // convert string buffer to wide character string to deal with unicode characters
+        std::wstring wc_file_content;
+        wc_file_content.resize(size);
+        if (MultiByteToWideChar(CP_UTF8, 0, mb_file_content.c_str(), (int)mb_file_content.size(),
+                &wc_file_content[0], (int)wc_file_content.size()) == 0)
+        {
+            // TODO error handling
+        }
+
+        return XmlParser(path, std::move(wc_file_content)).read_xml_doc();
     }
 
     void XmlParser::init()
@@ -45,8 +69,8 @@ namespace pkmn::xml
         s_initialized = true;
     }
 
-    XmlParser::XmlParser(const std::wstring& path) noexcept
-        : m_src_pos({ path, 0u, 0u }), m_state(ParserState::e_null)
+    XmlParser::XmlParser(const std::wstring& path, std::wstring&& file_content) noexcept
+        : m_src_pos({ path, 1u, 1u }), m_wiss(std::move(file_content)), m_state(ParserState::e_null)
     {
         XmlParser::init();
     }
@@ -73,23 +97,20 @@ namespace pkmn::xml
 
     wchar_t XmlParser::wpeek(bool dont_throw_weof)
     {
-        wint_t win = m_wif.eof() ? WEOF : m_wif.peek();
-        if (!dont_throw_weof && win == WEOF) {
-            m_wif.close();
+        wint_t win = m_wiss.eof() ? WEOF : m_wiss.peek();
+        if (!dont_throw_weof && (win == WEOF || (wchar_t)win == L'\0'))
             throw XMLEOFERR(m_src_pos);
-        }
+
         wchar_t wc = (wchar_t)win;
         return wc;
     }
 
     wchar_t XmlParser::wread(bool dont_throw_weof)
     {
-        bool streamend = m_wif.eof();
-        wint_t win = streamend ? WEOF : m_wif.get();
-        if (!dont_throw_weof && win == WEOF) {
-            m_wif.close();
+        bool streamend = m_wiss.eof();
+        wint_t win = streamend ? WEOF : m_wiss.get();
+        if (!dont_throw_weof && (win == WEOF || (wchar_t)win == L'\0'))
             throw XMLEOFERR(m_src_pos);
-        }
 
         wchar_t wc = (wchar_t)win;
 
@@ -147,19 +168,15 @@ namespace pkmn::xml
         std::unordered_set<wchar_t> delims;
         delims.insert(L'=');
         std::wstring name = read_identifier(delims);
-        if (expected_attr_name && name != *expected_attr_name) {
-            m_wif.close();
+        if (expected_attr_name && name != *expected_attr_name)
             throw XMLCHARSEQERR(pos, L"Attribute name " + *expected_attr_name, name);
-        }
 
         // extract whitespace and '=' from stream
         read_whitespace();
         pos = m_src_pos;
         wchar_t wc = wread();
-        if (wc != L'=') {
-            m_wif.close();
+        if (wc != L'=')
             throw XMLCHARSEQERR(pos, L"=", std::wstring(1u, wc));
-        }
         read_whitespace();
 
         // get opening single or double quote from stream
@@ -170,10 +187,8 @@ namespace pkmn::xml
             double_quoted = false;
         else if (wc == L'\"')
             double_quoted = true;
-        else {
-            m_wif.close();
+        else
             throw XMLCHARSEQERR(pos, L"\' or \"", std::wstring(1u, wc));
-        }
 
         // extract attribute value from stream
         std::wstring value;
@@ -181,10 +196,8 @@ namespace pkmn::xml
         {
             wc = wread();
 
-            if (s_whitespaces.find(wc) != s_whitespaces.end()) {
-                m_wif.close();
+            if (s_whitespaces.find(wc) != s_whitespaces.end())
                 throw XMLPARSEERR(pos, L"Attribute values must not contain whitespace");
-            }
 
             if ((double_quoted && wc == L'\"') || (!double_quoted && wc == L'\''))
                 break;
@@ -209,19 +222,15 @@ namespace pkmn::xml
                 wc = wread();
                 if (wc == L'>')
                     return true;
-                else {
-                    m_wif.close();
+                else
                     throw XMLCHARSEQERR(posx, L">", std::wstring(1u, wc));
-                }
             }
             return false;
         };
 
         // check for premature closing of xml declaration tag
-        if (check_end()) {
-            m_wif.close();
+        if (check_end())
             throw XMLPARSEERR(m_src_pos, L"The XML declaration is missing a version attribute");
-        }
 
         std::wstring version = read_attribute(L"version").m_value;
 
@@ -248,14 +257,11 @@ namespace pkmn::xml
             else {
                 pos = m_src_pos;
                 pos.m_col -= attr.m_value.length() + 1;
-                m_wif.close();
                 throw XMLCHARSEQERR(pos, L"yes or no", attr.m_value);
             }
         }
-        else {
-            m_wif.close();
+        else
             throw XMLCHARSEQERR(pos, L"encoding or standalone", attr.m_name);
-        }
 
         pos = m_src_pos;
         if (check_end()) {
@@ -264,10 +270,8 @@ namespace pkmn::xml
             else
                 return XmlDeclaration(decl_pos, std::move(version), *standalone);
         }
-        else if (standalone) {
-            m_wif.close();
+        else if (standalone)
             throw XMLPARSEERR(pos, L"The standalone attribute must come last in a xml declaration");
-        }
 
         attr = read_attribute(L"standalone");
         if (attr.m_value == L"yes")
@@ -277,14 +281,11 @@ namespace pkmn::xml
         else {
             pos = m_src_pos;
             pos.m_col -= attr.m_value.length() + 1;
-            m_wif.close();
             throw XMLCHARSEQERR(pos, L"yes or no", attr.m_value);
         }
 
-        if (!check_end()) {
-            m_wif.close();
+        if (!check_end())
             throw XMLPARSEERR(pos, L"A xml declaration must not have attributes other than version, encoding standalone");
-        }
 
         return XmlDeclaration(decl_pos, std::move(version), std::move(encoding), *standalone);
     }
@@ -314,7 +315,6 @@ namespace pkmn::xml
                     if (buf.length() != 0u)
                         return buf;
                     else if (has_whitespace_after_target) {
-                        m_wif.close();
                         throw XMLPARSEERR(pos, L"A processing instruction with no data must be closed "
                             "immediately after the target (no whitespace allowed)");
                     }
@@ -355,7 +355,6 @@ namespace pkmn::xml
                     if (wc == L'>')
                         return buf.substr(0u, buf.length() - 1u);
                     else {
-                        m_wif.close();
                         throw XMLPARSEERR(pos, L"A comment must not contain two consecutive hyphens "
                             "except to close the comment");
                     }
@@ -366,15 +365,6 @@ namespace pkmn::xml
 
     XmlDocument XmlParser::read_xml_doc()
     {
-        if (m_wif.is_open())
-            m_wif.close();
-
-        // set exception mask for stream and open xml file for reading
-        m_wif.exceptions(m_wif.badbit | m_wif.failbit);
-        m_wif.open(m_src_pos.m_file);
-        m_src_pos.m_line = 1u;
-        m_src_pos.m_col = 1u;
-
         wchar_t wc;
         SourcePosition pos;
         while (true)
@@ -390,14 +380,12 @@ namespace pkmn::xml
                     // reached markup opening --> update parser state
                     push_state(ParserState::e_ang_o);
                 }
-                else if (wc == (wchar_t)WEOF) {
-                    // reached end of file --> update parser state
+                else if (wc == (wchar_t)WEOF || wc == L'\0') {
+                    // reached end of file or end of string --> update parser state
                     set_state(ParserState::e_eof);
                 }
-                else if (s_whitespaces.find(wc) == s_whitespaces.end()) {
-                    m_wif.close();
+                else if (s_whitespaces.find(wc) == s_whitespaces.end())
                     throw XMLCHARSEQERR(pos, L"\'<\' or whitespace", std::wstring(1u, wc));
-                }
                 else
                     read_whitespace(true);
 
@@ -428,10 +416,8 @@ namespace pkmn::xml
                     // end tag (only allowed if we have open start tags on the stack)
                     pos = m_src_pos;
                     --pos.m_col;
-                    if (m_open_elements.empty()) {
-                        m_wif.close();
+                    if (m_open_elements.empty())
                         throw XMLCHARSEQERR(pos, L"A start tag or an empty element tag", L"An end tag");
-                    }
 
                     // extract '/' and end tag identifier from stream
                     wread();
@@ -442,19 +428,15 @@ namespace pkmn::xml
 
                     // match end tag identifier against open start tag
                     const std::wstring& match = m_open_elements.top()->get_name();
-                    if (tag != match) {
-                        m_wif.close();
+                    if (tag != match)
                         throw XMLCHARSEQERR(pos, match, tag);
-                    }
 
                     // extract whitespace and closing angular bracket from stream
                     read_whitespace();
                     pos = m_src_pos; // save position for possible exception
                     wc = wread();
-                    if (wc != L'>') {
-                        m_wif.close();
+                    if (wc != L'>')
                         throw XMLCHARSEQERR(pos, L">", std::wstring(1u, wc));
-                    }
 
                     // pop element from stack and return parser to previous state
                     // (need to pop two states from stack: one for the closed element
@@ -482,7 +464,6 @@ namespace pkmn::xml
                     else if (m_doc.get_root() == nullptr)
                         m_doc.set_root(element);
                     else {
-                        m_wif.close();
                         throw XMLPARSEERR(pos, L"Encountered a second root element. "
                             "Every XML document must have exactly one root element.");
                     }
@@ -507,7 +488,6 @@ namespace pkmn::xml
                 {
                     // xml declaration
                     if (m_doc.get_xml_declaration()) {
-                        m_wif.close();
                         throw XMLPARSEERR(pos, L"Encountered a second xml declaration. "
                             "Every XML document must not have more than one xml declarations.");
                     }
@@ -522,7 +502,6 @@ namespace pkmn::xml
                             m_doc.set_xml_decl(read_xml_decl(pos));
                         }
                         else {
-                            m_wif.close();
                             throw XMLPARSEERR(pos, L"The XML declaration, if there is one, "
                                 "must be at the very beginning of the XML document");
                         }
@@ -561,10 +540,8 @@ namespace pkmn::xml
                     buf.push_back(wread());
                     buf.push_back(wread());
                     std::wstring expected = L"<!--";
-                    if (buf != expected) {
-                        m_wif.close();
+                    if (buf != expected)
                         throw XMLCHARSEQERR(pos, expected, buf);
-                    }
 
                     std::shared_ptr<XmlElement> parent = m_open_elements.empty() ? nullptr : m_open_elements.top();
                     std::shared_ptr<XmlComment> comment = std::make_shared<XmlComment>(pos, read_comment(), parent);
@@ -608,10 +585,8 @@ namespace pkmn::xml
                         m_open_elements.pop();
                         pop_state();
                     }
-                    else {
-                        m_wif.close();
+                    else
                         throw XMLCHARSEQERR(pos, L"/>", std::wstring(L"/") + std::wstring(1u, wc));
-                    }
                 }
                 else
                 {
@@ -649,7 +624,6 @@ namespace pkmn::xml
                 break;
             }
             case pkmn::xml::ParserState::e_eof:
-                m_wif.close();
                 // throw exception if there is no root element
                 if (m_doc.get_root() == nullptr) {
                     throw XMLPARSEERR(m_src_pos, L"Found no root element while parsing the file. "
@@ -657,7 +631,6 @@ namespace pkmn::xml
                 }
                 return m_doc;
             default:
-                m_wif.close();
                 throw XMLILLSTATEERR(m_src_pos, m_state);
             }
         }
