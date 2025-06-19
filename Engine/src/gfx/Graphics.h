@@ -1,6 +1,5 @@
 #pragma once
 #include "../util/Macros.h"
-#include "../util/Wintard.h"
 #ifndef NDEBUG
 #include "DxgiInfoManager.h"
 #endif // !NDEBUG
@@ -8,6 +7,7 @@
 #include <DirectXMath.h>
 #include <DirectXMathMatrix.inl>
 #include <dxgi.h>
+#include <Windows.h>
 #include <wrl/client.h>
 
 namespace pkmn::gfx

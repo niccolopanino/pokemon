@@ -1,5 +1,4 @@
 #pragma once
-#include "Wintard.h"
 #include "../error/InvalidArgumentException.h"
 #include "../error/NotSupportedException.h"
 #include "../gfx/DxgiInfoManager.h"
@@ -9,9 +8,11 @@
 #include "../gfx/error/HResWinException.h"
 #include "../gfx/error/NoGfxException.h"
 //#include "../gfx/error/SurfaceException.h"
-#include <corecrt.h>
 #include <string>
 #include <vector>
+#include <corecrt.h>
+#include <errhandlingapi.h>
+#include <Windows.h>
 
 // conditional noexcept
 

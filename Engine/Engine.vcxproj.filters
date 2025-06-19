@@ -34,7 +34,6 @@
     <ClCompile Include="src\xml\elements\XmlAttribute.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\util\Wintard.h" />
     <ClInclude Include="src\util\StringConv.h" />
     <ClInclude Include="src\io\Keyboard.h" />
     <ClInclude Include="src\util\Macros.h" />

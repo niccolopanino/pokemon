@@ -12,7 +12,7 @@
 //--------------------------------------------------------------------------------------
 
 #pragma once
-#include "../../../util/Wintard.h"
+#include <Windows.h>
 #include <sal.h>
 
 #ifdef __cplusplus

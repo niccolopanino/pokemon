@@ -1,12 +1,12 @@
 #include "Graphics.h"
 #include "../util/Macros.h"
-#include "../util/Wintard.h"
 #include <d3d11.h>
 #include <d3dcommon.h>
 #include <DirectXMath.h>
 #include <dxgi.h>
 #include <dxgiformat.h>
 #include <dxgitype.h>
+#include <Windows.h>
 #include <wrl/client.h>
 
 namespace wrl = Microsoft::WRL;

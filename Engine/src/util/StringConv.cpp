@@ -1,4 +1,5 @@
 #include "StringConv.h"
+#include <corecrt.h>
 #include <cstdlib>
 #include <string>
 

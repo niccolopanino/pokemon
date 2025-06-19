@@ -1,9 +1,9 @@
 #pragma once
 #include "../gfx/Graphics.h"
 #include "../io/Keyboard.h"
-#include "../util/Wintard.h"
 #include <memory>
 #include <optional>
+#include <Windows.h>
 
 namespace pkmn
 {
