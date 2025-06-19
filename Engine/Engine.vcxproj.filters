@@ -32,6 +32,7 @@
     <ClCompile Include="src\xml\error\UnexpectedCharSequenceException.cpp" />
     <ClCompile Include="src\error\NotSupportedException.cpp" />
     <ClCompile Include="src\xml\elements\XmlAttribute.cpp" />
+    <ClCompile Include="src\game\GameConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\util\StringConv.h" />
@@ -69,6 +70,7 @@
     <ClInclude Include="src\xml\error\UnexpectedCharSequenceException.h" />
     <ClInclude Include="src\error\NotSupportedException.h" />
     <ClInclude Include="src\xml\elements\XmlAttribute.h" />
+    <ClInclude Include="src\game\GameConfig.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\gfx\error\dxerr\DXGetErrorDescription.inl" />

@@ -47,10 +47,10 @@ namespace pkmn::xml
         return m_children;
     }
 
-    std::vector<std::shared_ptr<XmlElement>>
-    XmlElement::get_filtered_children(std::wstring tagname_filter) const noexcept
+    void XmlElement::get_filtered_children(std::wstring tagname_filter,
+        std::vector<std::shared_ptr<XmlElement>>& filtered_children) const noexcept
     {
-        std::vector<std::shared_ptr<XmlElement>> filtered_children;
+        filtered_children.clear();
 
         for (std::shared_ptr<XmlNode> child : m_children)
         {
@@ -65,8 +65,6 @@ namespace pkmn::xml
                 continue;
             }
         }
-
-        return filtered_children;
     }
 
     void XmlElement::set_name(std::wstring name) noexcept

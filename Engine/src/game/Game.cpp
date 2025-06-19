@@ -1,11 +1,13 @@
 #include "Game.h"
+#include "GameConfig.h"
 #include "../gfx/Window.h"
 #include "../io/Keyboard.h"
 #include <optional>
+#include <string>
 
 namespace pkmn::game
 {
-    Game::Game() : m_wnd(1024, 768, L"Pokémon Devgame")
+    Game::Game() : m_wnd(1024, 768, L"This should not appear")
     { }
 
     Game::~Game()
@@ -13,6 +15,9 @@ namespace pkmn::game
 
     int Game::run()
     {
+        GameConfig config = GameConfig::from_xml_file(L"resources/gameconfig.xml");
+        m_wnd.set_title(config.get_title().c_str());
+
         while (true) {
             // process all messages pending, but don't block for new messages
             if (const std::optional<int> ecode = Window::process_messages()) {
