@@ -4,6 +4,8 @@
 #include "XmlMisc.h"
 #include <memory>
 #include <optional>
+#include <ostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -51,5 +53,18 @@ namespace pkmn::xml
     void XmlDocument::add_misc_stuff_post_root(std::shared_ptr<XmlMisc> misc) noexcept
     {
         m_post_root_misc.push_back(misc);
+    }
+
+    std::wstring XmlDocument::to_wstring() const noexcept
+    {
+        std::wostringstream wos;
+        if (m_decl)
+            wos << m_decl->to_wstring() << std::endl;
+        for (std::shared_ptr<XmlMisc> misc : m_pre_root_misc)
+            wos << misc->to_wstring() << std::endl;
+        wos << m_root->to_wstring() << std::endl;
+        for (std::shared_ptr<XmlMisc> misc : m_post_root_misc)
+            wos << misc->to_wstring() << std::endl;
+        return wos.str();
     }
 }
