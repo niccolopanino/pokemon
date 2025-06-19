@@ -1,5 +1,5 @@
-#include "HResGfxException.h"
 #include "dxerr/dxerr.h"
+#include "HResGfxException.h"
 #include "../../util/StringConv.h"
 #include <sstream>
 

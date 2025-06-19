@@ -1,5 +1,6 @@
 #include "BaseException.h"
 #include "../util/StringConv.h"
+#include <ostream>
 #include <sstream>
 #include <string>
 
@@ -35,7 +36,7 @@ namespace pkmn
     const char* BaseException::what() const noexcept
     {
         std::wostringstream wos;
-        wos << get_type() << std::endl
+        wos << get_type() << std::endl << std::endl
             << get_origin_string();
         m_what_buffer = wstr_to_str(wos.str());
         return m_what_buffer.c_str();

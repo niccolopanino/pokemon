@@ -41,7 +41,7 @@ namespace pkmn::xml
     const char* XmlParserException::what() const noexcept
     {
         std::wostringstream wos;
-        wos << get_type() << std::endl
+        wos << BaseException::what() << std::endl << std::endl
             << get_src_pos_string();
 
         if (m_note) {

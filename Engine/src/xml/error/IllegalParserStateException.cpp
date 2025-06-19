@@ -26,8 +26,7 @@ namespace pkmn::xml
     const char* IllegalParserStateException::what() const noexcept
     {
         std::wostringstream wos;
-        wos << get_type() << std::endl
-            << get_src_pos_string() << std::endl
+        wos << XmlParserException::what() << std::endl
             << L"[Parser State] " << parser_state_to_wstring(m_state);
 
         m_what_buffer = wstr_to_str(wos.str());

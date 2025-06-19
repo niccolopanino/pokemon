@@ -1,7 +1,7 @@
 #include "StringConv.h"
-#include <corecrt.h>
 #include <cstdlib>
 #include <string>
+#include <corecrt.h>
 
 namespace pkmn
 {

@@ -31,8 +31,7 @@ namespace pkmn::xml
     const char* UnexpectedCharSequenceException::what() const noexcept
     {
         std::wostringstream wos;
-        wos << get_type() << std::endl
-            << get_src_pos_string() << std::endl
+        wos << XmlParserException::what() << std::endl
             << L"[Expected] " << m_expected << std::endl
             << L"[Got] " << m_actual;
 
